@@ -2,6 +2,7 @@ package services.implementation;
 
 import models.entities.Medico;
 import repository.interfaces.MedicoRepository;
+import repository.interfaces.AvaliacaoRepository;
 import services.interfaces.MedicoService;
 
 import java.util.List;
@@ -32,9 +33,7 @@ public class MedicoServiceImpl implements MedicoService {
     public List<Medico> listarPorPlano(String plano) { return medicoRepository.listarPorPlano(plano); }
 
     @Override
-    public List<Medico> listar() {
-        return medicoRepository.listar();
-    }
+    public List<Medico> listar() { return medicoRepository.listar(); }
 
     @Override
     public Medico login(String nome) { return medicoRepository.buscarPorNome(nome); }

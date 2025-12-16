@@ -7,6 +7,7 @@ import models.entities.Consulta;
 import models.entities.Medico;
 import models.entities.Paciente;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuPacienteLogado {
@@ -29,11 +30,14 @@ public class MenuPacienteLogado {
 
     public void abrir(Paciente paciente) {
         while (true) {
-            System.out.println("\n--- PACIENTE LOGADO ---");
+            System.out.println("\n--- PACIENTE LOGADO ---\n" +
+                    " id: " + paciente.getId() +
+                    " | nome: " + paciente.getNome() + "\n");
             System.out.println("1 - Ver médicos disponíveis");
             System.out.println("2 - Agendar consulta");
             System.out.println("3 - Cancelar consulta");
             System.out.println("4 - Avaliar consulta");
+            System.out.println("5 - Listar minhas consultas");
             System.out.println("0 - Logout");
             System.out.print("Escolha: ");
 
@@ -50,14 +54,22 @@ public class MenuPacienteLogado {
                 case 2 -> agendarConsulta(paciente);
                 case 3 -> cancelarConsulta(paciente);
                 case 4 -> avaliarConsulta(paciente);
+                case 5 -> listarMinhasConsultas(paciente);
                 case 0 -> { return; }
                 default -> System.out.println("Opção inválida.");
             }
         }
     }
 
+    private void listarMinhasConsultas(Paciente paciente) {
+        List<Consulta> consultas = consultaController.listarPorPaciente(paciente.getId());
+        for(Consulta c: consultas){
+            System.out.println("Id da consulta: " + c.getId() +
+                    " id do médico: " + c.getIdMedico() +
+                    " data da consulta: " + c.getData());
+        }
+    }
     private void listarMedicos(Paciente paciente) {
-        System.out.println("\n--- Médicos disponíveis ---");
 
         // Lista todos os médicos
         var medicos = paciente.getPlanoSaude().equals("SEM_PLANO")
@@ -70,16 +82,13 @@ public class MenuPacienteLogado {
         }
 
         for (var m : medicos) {
-            // Calcula média de estrelas do médico
             double media = avaliacaoController.mediaEstrelas(m.getId());
-
             System.out.println(
                     "ID: " + m.getId() +
                             " | Nome: " + m.getNome() +
                             " | Especialidade: " + m.getEspecialidade() +
                             " | Plano atendido: " + m.getPlanoAtendido() +
-                            " | Avaliação: " + String.format("%.1f", media) + " ★"
-            );
+                            " | Avaliação: " + String.format("%.1f", media) + " ★");
         }
     }
 

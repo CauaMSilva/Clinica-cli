@@ -1,6 +1,7 @@
 package controllers;
 
 import models.entities.Medico;
+import services.interfaces.AvaliacaoService;
 import services.interfaces.MedicoService;
 
 import java.util.List;
@@ -9,9 +10,7 @@ public class MedicoController {
 
     private final MedicoService medicoService;
 
-    public MedicoController(MedicoService medicoService) {
-        this.medicoService = medicoService;
-    }
+    public MedicoController(MedicoService medicoService) { this.medicoService = medicoService; }
 
     public void cadastrarMedico(Medico medico) {
         medicoService.cadastrar(medico);

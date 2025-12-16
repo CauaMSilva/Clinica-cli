@@ -21,9 +21,7 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
         this.consultaRepo = cRepo;
     }
 
-    @Override
-    public void avaliar(int id, int idConsulta, int idMedico, int estrelas, String comentario) {
-
+    private void validarConsulta(int idConsulta, int estrelas) {
         Consulta c = consultaRepo.buscarPorId(idConsulta);
 
         if (c == null)
@@ -34,6 +32,11 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
 
         if (estrelas < 1 || estrelas > 5)
             throw new IllegalArgumentException("Nota deve ser entre 1 e 5");
+    }
+
+    @Override
+    public void avaliar(int id, int idConsulta, int idMedico, int estrelas, String comentario) {
+        validarConsulta(idConsulta, estrelas);
 
         int novoId = avaliacaoRepo.listar().size() + 1;
 
