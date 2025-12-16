@@ -3,20 +3,45 @@ package services.implementation;
 import controllers.ConsultaController;
 import models.entities.Consulta;
 import repository.interfaces.ConsultaRepository;
+import repository.interfaces.MedicoRepository;
 import services.interfaces.ConsultaService;
+import services.interfaces.PacienteService;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ConsultaServiceImpl implements ConsultaService {
 
     private final ConsultaRepository repository;
+    private final PacienteService pacienteRepository;
+    private final MedicoRepository medicoRepository;
 
-    public ConsultaServiceImpl(ConsultaRepository repository) {
+    public ConsultaServiceImpl(ConsultaRepository repository,PacienteService pacienteRepository, MedicoRepository medicoRepository) {
         this.repository = repository;
+        this.pacienteRepository = pacienteRepository;
+        this.medicoRepository = medicoRepository;
     }
 
     @Override
-    public void agendar(int idPaciente, int idMedico, String data) {
+    public Consulta agendar(int idPaciente, int idMedico, String data){
+        if (pacienteRepository.buscarPorId(idPaciente) == null){
+            throw new IllegalArgumentException("Erro: Paciente ID " + idPaciente + "não encontrado.");
+        }
+        if (medicoRepository.buscarPorId(idMedico) == null){
+            throw new IllegalArgumentException("Erro: Medico ID " + idMedico + " não encontrado.");
+        }
+
+        try{
+            java.time.format.DateTimeFormatter fmt = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            java.time.LocalDate dataDigitada = java.time.LocalDate.parse(data, fmt);
+
+            if (dataDigitada.isBefore(java.time.LocalDate.now())){
+                throw new IllegalArgumentException("Não é possivel agendar para uma data passada.");
+            }
+        } catch (java.time.format.DateTimeParseException e){
+            throw new IllegalArgumentException("Formatode data Inválido. Use dd/mm/aaaa.");
+        }
+
 
         long consultasNoDia = repository.listar().stream()
                 .filter(c ->
@@ -37,6 +62,8 @@ public class ConsultaServiceImpl implements ConsultaService {
         );
 
         repository.salvar(consulta);
+
+        return consulta;
     }
 
     @Override

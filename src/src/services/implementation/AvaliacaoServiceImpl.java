@@ -21,7 +21,13 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
         this.consultaRepo = cRepo;
     }
 
+<<<<<<< HEAD
     private void validarConsulta(int idConsulta, int estrelas) {
+=======
+    @Override
+    public void avaliar( int idConsulta, int estrelas, String comentario) {
+
+>>>>>>> 7af52e8 (resolvendo bugs do sistema)
         Consulta c = consultaRepo.buscarPorId(idConsulta);
 
         if (c == null)
@@ -38,12 +44,14 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
     public void avaliar(int id, int idConsulta, int idMedico, int estrelas, String comentario) {
         validarConsulta(idConsulta, estrelas);
 
+        int idMedicoReal = c.getIdMedico();
+
         int novoId = avaliacaoRepo.listar().size() + 1;
 
         Avaliacao a = new Avaliacao(
                 novoId,
                 idConsulta,
-                idMedico,
+                idMedicoReal,
                 estrelas,
                 comentario
         );

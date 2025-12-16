@@ -13,8 +13,8 @@ public class AvaliacaoController {
         this.service = service;
     }
 
-    public void avaliar(int id, int idConsulta, int idMedico, int estrelas, String comentario) {
-        service.avaliar(id, idConsulta, idMedico, estrelas, comentario);
+    public void avaliar( int idConsulta ,int estrelas, String comentario) {
+        service.avaliar(idConsulta, estrelas, comentario);
     }
 
     public int gerarNovoId(){ return service.gerarNovoId(); }

@@ -20,7 +20,7 @@ public class AppConfig {
     // Services
     private final PacienteServiceImpl pacienteService =  new PacienteServiceImpl(pacienteRepo);
     private final MedicoServiceImpl medicoService = new MedicoServiceImpl(medicoRepo);
-    private final ConsultaServiceImpl consultaService = new ConsultaServiceImpl(consultaRepo);
+    private final ConsultaServiceImpl consultaService = new ConsultaServiceImpl(consultaRepo, pacienteService, medicoRepo);
     private final AvaliacaoServiceImpl avaliacaoService = new AvaliacaoServiceImpl(avaliacaoRepo, consultaRepo);
 
     // Controllers

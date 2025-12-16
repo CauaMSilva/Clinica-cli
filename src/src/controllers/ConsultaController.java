@@ -11,7 +11,7 @@ public class ConsultaController {
 
     public ConsultaController(ConsultaService service) { this.service = service; }
 
-    public void agendar(int idPaciente, int idMedico, String data) { service.agendar(idPaciente, idMedico, data); }
+    public Consulta agendar(int idPaciente, int idMedico, String data) { return service.agendar(idPaciente, idMedico, data); }
 
     public void cancelar(int idConsulta) { service.cancelar(idConsulta); }
 
