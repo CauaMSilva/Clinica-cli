@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15" alignment="CENTER" prefWidth="700" prefHeight="600"
+      xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="fx.controller.medico.RealizarConsultaController">
+
+    <Label text="Realizar Consulta" style="-fx-font-size: 36px; -fx-font-weight: bold;"/>
+
+    <!-- Tabela de consultas agendadas -->
+    <TableView fx:id="tableConsultas" prefHeight="250" prefWidth="650">
+        <columns>
+            <TableColumn fx:id="colPaciente" text="Paciente" prefWidth="250"/>
+            <TableColumn fx:id="colData" text="Data" prefWidth="150"/>
+            <TableColumn fx:id="colStatus" text="Status" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <!-- Área de comentário -->
+    <TextArea fx:id="txtComentario" promptText="Digite seu comentário" prefHeight="150" prefWidth="500"/>
+
+    <!-- Botões -->
+    <Button text="Finalizar Consulta" onAction="#onFinalizar" prefWidth="250"/>
+    <Button text="Voltar" onAction="#onVoltar" prefWidth="250"/>
+
+    <!-- Label para mensagens -->
+    <Label fx:id="lblMensagem" text="" style="-fx-text-fill: red; -fx-font-size: 14px;"/>
+</VBox>

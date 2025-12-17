@@ -1,2 +1,9 @@
-1;1;1;20/12/2025;REALIZADA
-2;1;1;22/12/2025;AGENDADA
+1;1;1;2025-12-19;AGENDADA;nenhum
+2;1;5;2025-12-22;CANCELADA;nenhum
+3;3;3;2025-12-18;AGENDADA;nenhum
+4;3;3;2025-12-19;AGENDADA;nenhum
+5;3;3;2025-12-19;AGENDADA;nenhum
+6;3;3;2025-12-19;AGENDADA;nenhum
+7;2;2;2025-12-18;REALIZADA;nenhum
+8;2;2;2025-12-19;AGENDADA;nenhum
+9;5;3;2025-12-18;REALIZADA;Paciente apresentou leve gripe, recomendação foi diporina e a tedência é melhorar

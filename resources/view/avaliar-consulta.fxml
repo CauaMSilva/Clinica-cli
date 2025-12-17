@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15" alignment="CENTER" prefWidth="600" prefHeight="400"
+      xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="fx.controller.paciente.AvaliarConsultaController">
+
+    <Label text="Avaliar Consulta" style="-fx-font-size: 36px;"/>
+
+    <ComboBox fx:id="cbEstrelas" prefWidth="150" promptText="Selecione a nota"/>
+    <TextArea fx:id="txtComentario" prefWidth="400" prefHeight="150" promptText="Digite um comentário"/>
+
+    <Button text="Avaliar" onAction="#onAvaliar" prefWidth="200" style="-fx-font-size: 18px;"/>
+    <Button text="Voltar" onAction="#onVoltar" prefWidth="200" style="-fx-font-size: 18px;"/>
+
+    <Label fx:id="lblMensagem" style="-fx-text-fill: green; -fx-font-size: 16px;"/>
+</VBox>

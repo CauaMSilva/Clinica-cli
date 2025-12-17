@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="20" alignment="CENTER" prefWidth="700" prefHeight="600"
+      xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="fx.controller.medico.LoginMedicoController">
+
+    <!-- Label principal -->
+    <Label text="Login Médico" style="-fx-font-size: 40px;"/>
+
+    <!-- Campos de entrada -->
+    <TextField fx:id="txtNome" promptText="Nome"/>
+
+    <ComboBox fx:id="cbEspecialidade" promptText="Especialidade"/>
+    <ComboBox fx:id="cbPlanoSaude" promptText="Plano de Saúde"/>
+
+    <!-- Botões -->
+    <Button text="Login" onAction="#onLogin" prefWidth="200" prefHeight="40"/>
+    <Button text="Cadastrar" onAction="#onCadastro" prefWidth="200" prefHeight="40"/>
+
+</VBox>

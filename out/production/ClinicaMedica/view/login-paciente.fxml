@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="15"
+      alignment="CENTER"
+      prefHeight="568.0"
+      prefWidth="699.0"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="fx.controller.paciente.LoginPacienteController">
+
+    <children>
+
+        <Label text="Tela de Login Paciente">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Label>
+
+        <TextField fx:id="txtNome" promptText="Nome do paciente"/>
+
+        <TextField fx:id="txtIdade" promptText="Idade"/>
+
+        <ComboBox fx:id="cbPlanoSaude" promptText="Plano de saúde"/>
+
+        <Button text="Cadastrar-se" onAction="#onCadastro"/>
+
+        <Button text="Login" onAction="#onLogin"/>
+
+    </children>
+</VBox>
